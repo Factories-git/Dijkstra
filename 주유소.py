@@ -8,8 +8,6 @@ def dijkstra(g, start):
     pq = [(0, start)]
     while pq:
         curr_dist, curr_vert = heapq.heappop(pq)
-        if curr_vert == target:
-            return [curr_dist , re]
         if curr_dist > distances[curr_vert]:
             continue
         for vertex, weight in g[curr_vert]:
@@ -17,8 +15,8 @@ def dijkstra(g, start):
             if new_dist < distances[vertex]:
                 distances[vertex] = new_dist
                 heapq.heappush(pq, (new_dist, vertex))
-                re[vertex] = vertex
-        #바로 위는 디버깅용, 바로 아래는 정답용
+                print(curr_dist, curr_vert)
+    return distances[-1]
 
 
 n, m = map(int, input().split())
